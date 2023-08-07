@@ -570,6 +570,9 @@
     overflow: hidden;
     cursor: pointer;
 
+    display: inline-block;
+    text-decoration: none;
+
     & > * {
         display: inline-block;
         height: 100%;
@@ -605,5 +608,121 @@
     &:focus {
         outline: none;
         animation: pulsate 1s infinite;
+    }
+}
+
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(#000, .9);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &__content {
+        width: 70%;
+        height: 50rem;
+        background-color: var(--color-grey-light-1);
+        box-shadow: var(--shadow-dark);
+        border-radius: 3px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .3s .2s;
+
+        display: flex;
+    }
+
+    &__left {
+        flex: 0 0 40%;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        margin: 0 3rem;
+    }
+
+    &__img {
+        height: 50%;
+        width: 100%;
+    }
+
+    &__heading-1 {
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-family: inherit;
+        font-weight: 600;
+        color: var(--color-primary-light);
+        display: block;
+
+    }
+
+    &__heading-2 {
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        font-weight: 500;
+        display: block;
+        color: var(--color-grey-dark-2);
+
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid var(--color-grey-dark-3);
+        hyphens: auto;
+
+    }
+
+    &__btn {
+        text-decoration: none;
+        padding: 1.5rem 3rem;
+    }
+
+    // Open states
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+
+    }
+
+    &__close {
+        &:link,
+        &:visited {
+            color: var(--color-grey-dark-3t);
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;
+        }
+
+        &:hover {
+            color: var(--color-primary-light);
+        }
     }
 }

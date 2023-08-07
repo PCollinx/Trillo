@@ -26,6 +26,7 @@ Grey dark 3: #999
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
+  --color-black: #000;
   --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
   --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
   --line: 1px solid var(--color-grey-light-2); }
@@ -515,7 +516,9 @@ body {
   color: #fff;
   position: relative;
   overflow: hidden;
-  cursor: pointer; }
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none; }
   .btn > * {
     display: inline-block;
     height: 100%;
@@ -537,3 +540,82 @@ body {
   .btn:focus {
     outline: none;
     animation: pulsate 1s infinite; }
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s; }
+  .popup__content {
+    width: 70%;
+    height: 50rem;
+    background-color: var(--color-grey-light-1);
+    box-shadow: var(--shadow-dark);
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: all .3s .2s;
+    display: flex; }
+  .popup__left {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column; }
+  .popup__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 3rem; }
+  .popup__img {
+    height: 50%;
+    width: 100%; }
+  .popup__heading-1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary-light);
+    display: block; }
+  .popup__heading-2 {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: block;
+    color: var(--color-grey-dark-2); }
+  .popup__text {
+    font-size: 1.4rem;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid var(--color-grey-dark-3);
+    hyphens: auto; }
+  .popup__btn {
+    text-decoration: none;
+    padding: 1.5rem 3rem; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
+  .popup__close:link, .popup__close:visited {
+    color: var(--color-grey-dark-3t);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    line-height: 1; }
+  .popup__close:hover {
+    color: var(--color-primary-light); }
